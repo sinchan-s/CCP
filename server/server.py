@@ -3,25 +3,61 @@ import util
 
 app = Flask(__name__)
 
-
-@app.route('/get_location_names')
-def get_location_names():
+# for checking the article names
+@app.route('/get_article_names')
+def get_article_names():
     response = jsonify({
-        'locations': util.get_location_names()
+        'articles': util.get_article_names()
+    })
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
+
+# for checking the fibre names
+@app.route('/get_fibre_names')
+def get_fibre_names():
+    response = jsonify({
+        'fibres': util.get_fibre_names()
+    })
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
+
+# for checking the finish names
+@app.route('/get_finish_names')
+def get_finish_names():
+    response = jsonify({
+        'finishes': util.get_finish_names()
+    })
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
+
+# for checking the print names
+@app.route('/get_prints_names')
+def get_prints_names():
+    response = jsonify({
+        'prints': util.get_prints_names()
     })
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
 
-@app.route('/predict_home_price', methods=['POST'])
-def predict_home_price():
-    total_sqft = float(request.form['total_sqft'])
-    location = request.form['location']
-    bhk = int(request.form['bhk'])
-    bath = int(request.form['bath'])
-
+@app.route('/predict_color_consum', methods=['POST'])
+def predict_color_consum():
+    count = float(request.form['count'])
+    cover = int(request.form['cover'])
+    meters = int(request.form['meters'])
+    mesh = int(request.form['mesh'])
+    rod = int(request.form['rod'])
+    speed = int(request.form['speed'])
+    hits = int(request.form['hits'])
+    c_hits = int(request.form['c_hits'])
+    machine = int(request.form['machine'])
+    viscosity = int(request.form['viscosity'])
+    article = request.form['article']
+    fibre = request.form['fibre']
+    finish = request.form['finish']
+    prints = request.form['prints']
     response = jsonify({
-        'estimated_price': util.get_estimated_price(location, total_sqft, bhk, bath)
+        'estimated_consum': util.get_estimated_consum(article,fibre,finish,prints,count,cover,meters,mesh,rod,speed,hits,c_hits,viscosity,machine)
     })
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
@@ -29,5 +65,5 @@ def predict_home_price():
 
 if __name__ == "__main__":
     util.load_saved_artifacts()
-    print("starting the bhp server...")
+    print("starting the ccp server...")
     app.run()

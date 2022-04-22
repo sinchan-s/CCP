@@ -1,2 +1,3 @@
 *.ipynb_checkpoints
 *.csv
+server/__pycache__/
