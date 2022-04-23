@@ -95,15 +95,15 @@ h2 {
   margin: 25px 0 10px;
   box-sizing: border-box;
   font-size: 15px;
-	height: 35px;
-	text-align: center;
-	font-weight: bold;
-	border-radius: 5px;
-	cursor: pointer;
+  height: 35px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .result{
-	background: #dcd686;
+	background: #f5e2ff;
 	width: 76%;
 	border: 0;
 	margin: 25px 0 10px;
@@ -111,6 +111,7 @@ h2 {
 	font-size: 15px;
 	height: 35px;
 	text-align: center;
+	border-radius: 4px 4px 4px 4px;
 }
 
 .img {
