@@ -5,16 +5,56 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="app.js"></script>
 	<link rel="stylesheet" href="app.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 <div class="img"></div>
-<form class=form">
+<form class="form">
+	
 	<h2>Quantity(m)</h2>
     <input class="area"  type="text" id="uiMeter" class="floatLabel" name="Meters" value="1000">
 	<h2>Coverage(%)</h2>
 	<input class="area"  type="text" id="uiCover" class="floatLabel" name="Cover" value="30">
 	<h2>Speed(m/min)</h2>
 	<input class="area"  type="text" id="uiSpeed" class="floatLabel" name="Speed" value="40">
+	<h2>Viscosity</h2>
+	<input class="area"  type="text" id="uiViscosity" class="floatLabel" name="Viscosity" value="70">
+
+	<h2>Hits</h2>
+	<div class="switch-field">
+		<input type="radio" id="radio-hits-1" name="uiHits" value="1" checked/>
+		<label for="radio-hits-1">1</label>
+		<input type="radio" id="radio-hits-2" name="uiHits" value="2"/>
+		<label for="radio-hits-2">2</label>
+		<input type="radio" id="radio-hits-3" name="uiHits" value="3"/>
+		<label for="radio-hits-3">3</label>
+		<input type="radio" id="radio-hits-4" name="uiHits" value="4"/>
+		<label for="radio-hits-4">4</label>
+		<input type="radio" id="radio-hits-5" name="uiHits" value="5"/>
+		<label for="radio-hits-5">5</label>
+	</div>
+	<h2>Color Hits</h2>
+	<div class="switch-field">
+		<input type="radio" id="radio-chits-1" name="uiCHits" value="1" checked/>
+		<label for="radio-chits-1">1</label>
+		<input type="radio" id="radio-chits-2" name="uiCHits" value="2"/>
+		<label for="radio-chits-2">2</label>
+		<input type="radio" id="radio-chits-3" name="uiCHits" value="3"/>
+		<label for="radio-chits-3">3</label>
+		<input type="radio" id="radio-chits-4" name="uiCHits" value="4"/>
+		<label for="radio-chits-4">4</label>
+		<input type="radio" id="radio-chits-5" name="uiCHits" value="5"/>
+		<label for="radio-chits-5">5</label>
+	</div>
+	<h2>Machine Number</h2>
+	<div class="switch-field">
+		<input type="radio" id="radio-machine-1" name="uiMachine" value="1" checked/>
+		<label for="radio-machine-1">1</label>
+		<input type="radio" id="radio-machine-2" name="uiMachine" value="2"/>
+		<label for="radio-machine-2">2</label>
+		<input type="radio" id="radio-machine-3" name="uiMachine" value="3"/>
+		<label for="radio-machine-3">3</label>
+	</div>
 	<h2>Rod(mm)</h2>
 	<div class="switch-field">
 		<input type="radio" id="radio-rod-1" name="uiRod" value="6"/>
@@ -41,8 +81,6 @@
 		<input type="radio" id="radio-mesh-4" name="uiMesh" value="195"/>
 		<label for="radio-mesh-4">195</label>
 	</div>
-</form>
-<form class="form">
 	<h2>Print Style</h2>
 	<div class="switch-field">
 		<input type="radio" id="radio-prints-1" name="uiPrint" value="1"/>
@@ -52,10 +90,19 @@
 		<input type="radio" id="radio-prints-3" name="uiPrint" value="3"/>
 		<label for="radio-prints-3">Discharge</label>	
 	</div>
-		<h2>Articles List</h2>
+	<h2>Fabric Finish</h2>
+	<div class="switch-field">
+		<input type="radio" id="radio-finish-1" name="uiFinish" value="1"/>
+		<label for="radio-finish-1">None</label>
+		<input type="radio" id="radio-finish-2" name="uiFinish" value="2" checked/>
+		<label for="radio-finish-2">Peach</label>
+		<input type="radio" id="radio-finish-3" name="uiFinish" value="3"/>
+		<label for="radio-finish-3">Raise</label>	
+	</div>
+	<h2>Articles List</h2>
 	<div>
-  	<select class="location" name="" id="uiLArticle">
-    <option value="" disabled="disabled" selected="selected">Choose Article</option>
+  	<select class="articles" name="" id="uiArticles">
+    <option value="" selected="selected">Choose Article</option>
 		<option>A132D06</option>
         <option>13200046</option>
   	</select>
