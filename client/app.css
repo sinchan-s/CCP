@@ -54,6 +54,7 @@
 	margin: 8px auto;
 	padding-left: 16px;
 	z-index: 2;
+  align-items: center;
 }
 
 h2 {
@@ -74,7 +75,7 @@ h2 {
   border-radius: 5px;
 }
 
-.location{
+.articles{
   font-family: "Roboto", sans-serif;
   outline: 0;
   background: #f2f2f2;
