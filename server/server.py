@@ -12,15 +12,6 @@ def get_article_names():
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
-# for checking the fibre names
-@app.route('/get_fibre_names')
-def get_fibre_names():
-    response = jsonify({
-        'fibres': util.get_fibre_names()
-    })
-    response.headers.add('Access-Control-Allow-Origin', '*')
-    return response
-
 # for checking the finish names
 @app.route('/get_finish_names')
 def get_finish_names():
@@ -42,7 +33,6 @@ def get_prints_names():
 
 @app.route('/predict_color_consum', methods=['POST'])
 def predict_color_consum():
-    count = float(request.form['count'])
     cover = int(request.form['cover'])
     meters = int(request.form['meters'])
     mesh = int(request.form['mesh'])
@@ -53,11 +43,10 @@ def predict_color_consum():
     machine = int(request.form['machine'])
     viscosity = int(request.form['viscosity'])
     article = request.form['article']
-    fibre = request.form['fibre']
     finish = request.form['finish']
     prints = request.form['prints']
     response = jsonify({
-        'estimated_consum': util.get_estimated_consum(article,fibre,finish,prints,count,cover,meters,mesh,rod,speed,hits,c_hits,viscosity,machine)
+        'estimated_consum': util.get_estimated_consum(article,finish,prints,cover,meters,mesh,rod,speed,hits,c_hits,viscosity,machine)
     })
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
