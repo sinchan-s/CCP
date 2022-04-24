@@ -7,7 +7,7 @@ app = Flask(__name__)
 @app.route('/get_article_names')
 def get_article_names():
     response = jsonify({
-        'articles': util.get_article_names()
+        'article': util.get_article_names()
     })
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response

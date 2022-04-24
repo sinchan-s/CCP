@@ -74,4 +74,4 @@ if __name__ == "__main__":
     print(get_article_names())
     print(get_finish_names())
     print(get_prints_names())
-    print(get_estimated_consum('18006','none','reactive',40,1000,125,8,30,1,1,70,2))
+    print(get_estimated_consum('13200046','raise','pigment',40,1000,125,8,30,1,1,70,2))
