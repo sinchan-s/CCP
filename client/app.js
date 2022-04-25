@@ -32,7 +32,7 @@ function getRodValue() {
   var uiRod = document.getElementsByName("uiRod");
   for(var i in uiRod) {
     if(uiRod[i].checked) {
-        return parseInt(i)+1;
+        return uiRod[i].value;
     }
   }
   return -1; // Invalid Value
@@ -42,7 +42,7 @@ function getMeshValue() {
   var uiMesh = document.getElementsByName("uiMesh");
   for(var i in uiMesh) {
     if(uiMesh[i].checked) {
-        return parseInt(i)+1;
+        return uiMesh[i].value;
     }
   }
   return -1; // Invalid Value
@@ -52,7 +52,7 @@ function getPrintValue() {
   var uiPrint = document.getElementsByName("uiPrint");
   for(var i in uiPrint) {
     if(uiPrint[i].checked) {
-        return parseInt(i)+1;
+        return uiPrint[i].value;
     }
   }
   return -1; // Invalid Value
@@ -62,7 +62,7 @@ function getFinishValue() {
   var uiFinish = document.getElementsByName("uiFinish");
   for(var i in uiFinish) {
     if(uiFinish[i].checked) {
-        return parseInt(i)+1;
+        return uiFinish[i].value;
     }
   }
   return -1; // Invalid Value
@@ -81,14 +81,14 @@ function onClickedEstimateConsumption() {
   var mesh = getMeshValue();
   var print = getPrintValue();
   var finish = getFinishValue();
-  var articles = document.getElementById("uiArticles");
+  var article = document.getElementById("uiArticle");
   var estConsum = document.getElementById("uiEstimatedConsumption");
 
   var url = "http://127.0.0.1:5000/predict_color_consum"; //Use this if you are NOT using nginx which is first 7 tutorials
   //var url = "/api/predict_color_consum"; // Use this if  you are using nginx. i.e tutorial 8 and onwards
 
   $.post(url, {  
-    articles: articles.value,
+    article: article.value,
     finish: finish,
     print: print,
     cover: cover,
@@ -114,12 +114,12 @@ function onPageLoad() {
   $.get(url,function(data, status) {
       console.log("got response for get_article_names request");
       if(data) {
-          var articles = data.articles;
-          var uiArticles = document.getElementById("uiArticles");
-          $('#uiArticles').empty();
-          for(var i in articles) {
-              var opt = new Option(articles[i]);
-              $('#uiArticles').append(opt);
+          var article = data.article;
+          var uiArticle = document.getElementById("uiArticle");
+          $('#uiArticle').empty();
+          for(var i in article) {
+              var opt = new Option(article[i]);
+              $('#uiArticle').append(opt);
           }
       }
   });
