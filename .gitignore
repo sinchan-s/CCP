@@ -1,3 +1,5 @@
 *.ipynb_checkpoints
 model/*.csv
 server/__pycache__/
+*.idea
+venv
