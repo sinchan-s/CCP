@@ -34,8 +34,8 @@ articles_list = (
     "A160B551",
     "A160B684", "A180A234", "A280A354", "A2A0A621")
 styles_list = ("Pigment", "Reactive", "Discharge")
-finish_list = ("NF", "Peach(P)", "Reactive(R)")
-data_columns_list = ["coverage", "meters", "mesh", "rod", "speed", "hits", "color-hits", "viscosity", "machine",
+finish_list = ("None", "Peach", "Raise")
+data_columns_list = np.array(["coverage", "meters", "mesh", "rod", "speed", "hits", "color-hits", "viscosity", "machine",
                      "11600084", "116414", "12000251", "120109", "120g88", "120h89", "12400017", "13000391", "13000437",
                      "130176", "130c56", "130d07", "130k00", "130q28", "13200046", "132144", "132340", "13257",
                      "132b147", "14000313", "14000396", "14000398", "14000756", "1400398", "140117", "14015", "140313",
@@ -48,7 +48,7 @@ data_columns_list = ["coverage", "meters", "mesh", "rod", "speed", "hits", "colo
                      "a145a387", "a150b433", "a150b589", "a150b593", "a150c071", "a150c549", "a150c944", "a150c971",
                      "a150d067", "a150d079", "a150d080", "a1600279", "a160a416", "a160a483", "a160a742", "a160b551",
                      "a160b684", "a180a234", "a280a354", "a2a0a621", "none", "peach", "raise", "discharge", "pigment",
-                     "reactive"]
+                     "reactive"])
 
 col1, col2, col3 = st.columns(3)
 meters = col1.number_input("Meters", min_value=1, max_value=100000)
@@ -61,31 +61,28 @@ speed = col1.slider("Speed", 10, 100)
 viscosity = col2.slider("Color Paste Viscosity", 40, 200)
 machine = col3.radio("Machine No.", (1, 2, 3), horizontal=True)
 rod = col1.radio("Rod Size", (6, 8, 10, 12, 15, 20), horizontal=True)
-hits = col2.radio("Samples printed", (1, 2, 3, 4, 5), horizontal=True)
-c_hits = col1.radio("Max Color Hits", (1, 2, 3, 4, 5), horizontal=True)
+hits = 1
+c_hits = 1
 
 
 with open('color_model.pickle', 'rb') as f:
     model = pickle.load(f)
 
-art_index = np.where(data_columns_list == article)
-st.write(art_index)
-
 def predict_consum(article, finish, style, coverage, meters, mesh, rod, speed, hits, c_hits, viscosity, machine):
     print('starting')
     try:
-        art_index = np.where(data_columns_list == article)[0][0]
+        art_index = np.where(data_columns_list == article.lower())[0][0]
     except:
         return 0
     try:
-        fin_index = np.where(X.columns == finish)[0][0]
+        fin_index = np.where(data_columns_list == finish.lower())[0][0]
     except:
         return 0
     try:
-        sty_index = np.where(X.columns == style)[0][0]
+        sty_index = np.where(data_columns_list == style.lower())[0][0]
     except:
         return 0
-    x = np.zeros(112)
+    x = np.zeros(len(data_columns_list))
     x[0] = coverage
     x[1] = meters
     x[2] = mesh
@@ -105,9 +102,10 @@ def predict_consum(article, finish, style, coverage, meters, mesh, rod, speed, h
 # paste value calculated using empirical formula
 cal_val = int(meters * coverage / 700 + 23)
 emp_value = f'{cal_val} Kg'
-st.subheader("Calculated Color Paste required:")
-st.latex(r'''\left(\frac{Coverage × Meters}{700}\right) + 23 Kg''')
+st.subheader("Calculated Color Paste:")
+st.latex(r'''Quantity = \left(\frac{Coverage × Meters}{700}\right) + 23 Kg''')
 st.info(emp_value)
 
-st.subheader("Estimated Color Paste required:")
-st.info("prediction")
+pred = predict_consum(article, finish, style, coverage, meters, mesh, rod, speed, hits, c_hits, viscosity, machine)
+st.subheader("Predicted Color Paste:")
+st.info(pred)
