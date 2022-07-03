@@ -44,6 +44,9 @@ st.info(cal)
 
 path = os.path.dirname(__file__)
 my_file = path+'../model/color_model.pickle'
+
+st.write(os.getcwd())
+
 with open(my_file, 'rb') as f:
     model = pickle.load(f)
 
