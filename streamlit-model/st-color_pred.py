@@ -2,7 +2,7 @@
 import streamlit as st
 import numpy as np
 import pickle
-import sklearn
+import os
 
 # site configurations
 st.set_page_config(
@@ -42,7 +42,9 @@ st.subheader("Calculated Color Paste:")
 st.latex(r'''Quantity = \left(\frac{Coverage × Meters}{700}\right) + 23 Kg''')
 st.info(cal)
 
-with open('../model/color_model.pickle', 'rb') as f:
+path = os.path.dirname(__file__)
+my_file = path+'../model/color_model.pickle'
+with open(my_file, 'rb') as f:
     model = pickle.load(f)
 
 
