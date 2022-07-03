@@ -2,6 +2,7 @@
 import streamlit as st
 import numpy as np
 import pickle
+import sklearn
 
 # site configurations
 st.set_page_config(
@@ -68,6 +69,7 @@ c_hits = 1
 with open('color_model.pickle', 'rb') as f:
     model = pickle.load(f)
 
+
 def predict_consum(article, finish, style, coverage, meters, mesh, rod, speed, hits, c_hits, viscosity, machine):
     print('starting')
     try:
@@ -101,11 +103,12 @@ def predict_consum(article, finish, style, coverage, meters, mesh, rod, speed, h
 
 # paste value calculated using empirical formula
 cal_val = int(meters * coverage / 700 + 23)
-emp_value = f'{cal_val} Kg'
+cal = f'{cal_val} Kg'
 st.subheader("Calculated Color Paste:")
 st.latex(r'''Quantity = \left(\frac{Coverage × Meters}{700}\right) + 23 Kg''')
-st.info(emp_value)
+st.info(cal)
 
-pred = predict_consum(article, finish, style, coverage, meters, mesh, rod, speed, hits, c_hits, viscosity, machine)
+pred_value = predict_consum(article, finish, style, coverage, meters, mesh, rod, speed, hits, c_hits, viscosity, machine)
 st.subheader("Predicted Color Paste:")
+pred = f'{pred_value} Kg'
 st.info(pred)
