@@ -68,13 +68,13 @@ path = os.path.dirname(__file__)
 my_file = path + '../model/color_model.pickle'
 for root, dirs, files in os.walk(".", topdown=True):
     for name in files:
-        #st.write(os.path.join(root, name))
+        st.write(os.path.join(root, name))
     for name in dirs:
         st.write(os.path.join(root, name))
 
 # st.write(os.getcwd())
 
-with open(my_file, 'rb') as f:
+with open('./model/color_model.pickle', 'rb') as f:
     model = pickle.load(f)
 
 
