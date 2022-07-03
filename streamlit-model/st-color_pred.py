@@ -65,12 +65,12 @@ st.latex(r'''Quantity = \left(\frac{Coverage × Meters}{700}\right) + 23 Kg''')
 st.info(cal)
 
 path = os.path.dirname(__file__)
-my_file = path + './model/color_model.pickle'
+my_file = path + '../model/color_model.pickle'
 for root, dirs, files in os.walk(".", topdown=True):
     for name in files:
         st.write(os.path.join(root, name))
     for name in dirs:
-        st.write(os.path.join(root, name))
+        #st.write(os.path.join(root, name))
 
 # st.write(os.getcwd())
 
