@@ -7,4 +7,4 @@ This repository is divided into 4 directories:
 4. **Streamlit-model**: it contains the streamlit framework based python [predictor](https://github.com/sinchan-s/CCP/blob/main/streamlit-model/st-color_pred.py) web-app, which is deployed on the streamit cloud platform and can be accessed with this [link](https://sinchan-s-ccp-streamlit-modelst-color-pred-9yqvu3.streamlitapp.com/)🙂.  
    
 ### Streamlit web-app:
-![image](https://user-images.githubusercontent.com/63915540/177386368-553915cb-4aff-474f-ae69-6582bdc14b98.png)
+![image](https://user-images.githubusercontent.com/63915540/178790905-6fbae578-704d-4d3d-ba21-b7bdc2912442.png)
