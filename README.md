@@ -9,4 +9,5 @@ This repository is divided into 4 directories:
 ### Streamlit web-app:
 ![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://sinchan-s-ccp-streamlit-modelst-color-pred-9yqvu3.streamlitapp.com/)   
-![image](https://user-images.githubusercontent.com/63915540/178790905-6fbae578-704d-4d3d-ba21-b7bdc2912442.png)
+![image](https://user-images.githubusercontent.com/63915540/179753006-74ee78e5-c94b-4f0f-b679-5155bb01bfb5.png)
+
